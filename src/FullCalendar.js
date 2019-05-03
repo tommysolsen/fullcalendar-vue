@@ -45,8 +45,9 @@ export default {
       let handlerHash = {}
 
       for (let eventName of EVENT_NAMES) {
+        const kebabCaseEventName = eventName.replace(/[A-Z]/g, (val) => `-${val.toLowerCase()}`)
         handlerHash[eventName] = (...args) => {
-          this.$emit(eventName, ...args)
+          this.$emit(kebabCaseEventName, ...args)
         }
       }
 
